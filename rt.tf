@@ -5,11 +5,9 @@ resource "aws_route_table" "public-rt" {
         cidr_block = "0.0.0.0/0"
         gateway_id = "${aws_internet_gateway.gw.id}"
     }
-
     tags = {
         Name = "Pbulic Subnet Route"
     }
-  
 }
 
 # Assign the route table to the Public Subnet
@@ -46,7 +44,7 @@ resource "aws_route_table_association" "private_rt1" {
     route_table_id = "${aws_route_table.private-rt.id}"
 }
 
-resource "aws_route_table_association" "public_rt2" {
+resource "aws_route_table_association" "private_rt2" {
     subnet_id = "${aws_subnet.private-subnet2.id}"
     route_table_id = "${aws_route_table.private-rt.id}"
 }

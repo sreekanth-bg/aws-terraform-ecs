@@ -33,7 +33,17 @@ variable "public_subnet_2b_cidr" {
     default = "10.0.0.128/25"
 }
 
-variable "private_bd_subnet_2a_cidr" { 
+variable "private_subnet_2a_cidr" { 
+    description = "CIDR for the Private 2a Subnet"
+    default = "10.0.1.0/25"
+}
+
+variable "private_subnet_2b_cidr" { 
+    description = "CIOR for the Private 2b DB Subnet"
+    default = "10.0.1.128/25"
+}
+
+variable "private_db_subnet_2a_cidr" { 
     description = "CIOR for the Private 2a DB Subnet"
     default = "10.0.2.0/25"
 }
