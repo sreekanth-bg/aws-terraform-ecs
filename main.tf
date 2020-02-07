@@ -40,8 +40,10 @@ output "GitLab_One-Time_DB_Creation_Command-Primary_Only_2" {
   value = "sudo gitlab-ctl reconfigure"
 }
 output "Bastion_Public_IP" {
-  value = aws_instance.bastion.public_ip
+  #value = aws_instance.bastion.public_ip
+  value = "${aws_instance.bastion.public_ip}"
 }
 output "DevOps_Apps_Public_IP_ELB" {
-  value = aws_lb.alb_apps.dns_name
+  #value = aws_lb.alb_apps.dns_name
+  value = "${aws_lb.alb_apps.dns_name}"
 }

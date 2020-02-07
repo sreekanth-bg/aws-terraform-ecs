@@ -61,7 +61,8 @@ resource "aws_launch_configuration" "git" {
   name_prefix   = "git-"
   image_id      = "${data.aws_ami.amzn.id}"
   instance_type = "t3.medium"
-  key_name = "${aws_key_pair.default.id}"
+  #key_name = "${aws_key_pair.default.id}"
+  key_name = "${var.ssh_key_name}"
   security_groups = ["${aws_security_group.sg_git.id}"]
   associate_public_ip_address = false
   user_data = "${data.template_cloudinit_config.config.rendered}"
@@ -83,7 +84,8 @@ resource "aws_launch_configuration" "jenkins-master" {
   name_prefix   = "jenkins-master-"
   image_id      = "${data.aws_ami.rhel.id}"
   instance_type = "t3.medium"
-  key_name = "${aws_key_pair.default.id}"
+  #key_name = "${aws_key_pair.default.id}"
+  key_name = "${var.ssh_key_name}"
   security_groups = ["${aws_security_group.sg_jenkins.id}"]
   user_data = "${file("scripts/jenkins-master.sh")}"
   associate_public_ip_address = false
@@ -106,7 +108,8 @@ resource "aws_launch_configuration" "jenkins-slave" {
   name_prefix   = "jenkins-slave-"
   image_id      = "${data.aws_ami.rhel.id}"
   instance_type = "t3.medium"
-  key_name = "${aws_key_pair.default.id}"
+  #key_name = "${aws_key_pair.default.id}"
+  key_name = "${var.ssh_key_name}"
   security_groups = ["${aws_security_group.sg_jenkins.id}"]
   user_data = "${file("scripts/jenkins-slave.sh")}"
   root_block_device {

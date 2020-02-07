@@ -21,7 +21,8 @@ data "aws_ami" "rhel" {
 resource "aws_instance" "bastion" {
   ami                         = "${data.aws_ami.rhel.id}"
   instance_type               = "t3.micro"
-  key_name                    = "${aws_key_pair.default.id}"
+  #key_name                    = "${aws_key_pair.default.id}"
+  key_name                    = "${var.ssh_key_name}"
   subnet_id                   = "${aws_subnet.public-subnet.id}"
   vpc_security_group_ids      = ["${aws_security_group.sgbastion.id}"]
   associate_public_ip_address = true

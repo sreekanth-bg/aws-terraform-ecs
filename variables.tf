@@ -1,7 +1,6 @@
 provider "aws" {
 	region =	"${var.aws_region}"
-	profile	= 	"poc"
-
+	profile	= 	"default"
 }
 
 variable "region" {
@@ -16,7 +15,7 @@ variable "aws_region" {
 
 variable "remote_cidr" {
     description = "CIDR from Remote Testing Source"
-    default = "173.172.103.202/32"
+    default = "0.0.0.0/0"
 }
 
 variable "vpc_name" {
@@ -58,9 +57,9 @@ variable "private_db_subnet_2b_cidr" {
     description = "CIDR for the Private 2b Subnet"
     default = "10.0.2.128/25"
 }
-variable "key_path" {
-  description = "SSH Public Key path"
-  default = "C:/Users/caldwell/.ssh/id_rsa.pub"
+ variable "ssh_key_name" {
+  description = "The name of the preloaded root ssh key used to access AWS resources."
+  default = "mykey"
 }
 variable "asg_jenkins_slave_min" {
   description = "Auto Scaling Minimum Size"
